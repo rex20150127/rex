@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360&deg; Image Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    
+    
+  </head>
+  <body >
+    
+    <div id="page-wrapper">
+      <!-- Header -->
+
+
+        <!-- LogoTopBar -->
+          <header >
+           <nav id="nav">
+             <center><img src="logo-tv-logo.png" height="175"></center>
+           </nav>
+          </header>
+        <!-- menu header -->
+        <header id='header'>
+          <h1 id="logo"><a href="index.html">Twenty <span>by HTML5 UP</span></a></h1>
+          <nav id="nav">
+            <ul>
+              <li class="current"><a href="index.html">Welcome</a></li>
+              <li class="submenu">
+                <a href="#">Layouts</a>
+                <ul>
+                  <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                  <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                  <li><a href="no-sidebar.html">No Sidebar</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                  <li class="submenu">
+                    <a href="#">Submenu</a>
+                    <ul>
+                      <li><a href="#">Dolore Sed</a></li>
+                      <li><a href="#">Consequat</a></li>
+                      <li><a href="#">Lorem Magna</a></li>
+                      <li><a href="#">Sed Magna</a></li>
+                      <li><a href="#">Ipsum Nisl</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#" class="button special">Sign Up</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <article id="main">
+          
+          
+
+
+          <div id="container">
+          <!-- A-frame Viewer -->
+          <iframe name="ifr" allowfullscreen="yes" 
+              allowvr="yes" src="Vrmode/VRMode.html" height="700" width="100%"></iframe>
+
+          <!-- VRmode Button  -->
+          
+            <center>
+            <div id='FloatinBtn'>
+              <img  id='floatButton' class="icon circle" src='vr.png' onclick="VRmodeBtn();">
+              <img  id='floatButton' class="icon circle" src='sound.png'>
+              <img  id='floatButton' class="icon circle" src='full.png' id="FullScreenBtn">
+            </div>
+            </center>
+          
+          </div>
+          
+
+          <!-- List Header -->
+          
+          <section id="ListHeader" class="wrapper style3 container special" >
+
+
+          <style type="text/css">
+            #ListHeader {
+                background-color: #FCCCCF;
+                margin-top: -2em;
+                margin-bottom: 1.5em;
+            }
+            #FloatinBtn{
+                background-opacity: 0.5;
+                position: relative; 
+                width: 10.5em; 
+                top: -3.8em;
+                /*background-color: #000000  ;*/
+                background: rgba(77,77,77,0.3);  
+                padding: 0.05em 10px;
+                /*border-radius: 10px;                  */
+                /*-moz-border-radius: 10px;*/
+                /*-webkit-border-radius: 10px;*/
+                z-index: 10000;
+            }
+            #floatButton{
+                padding: 5px;
+                margin-top: 7px ;
+            }
+
+          </style>
+            <!-- <div class="container"> -->
+            
+              <div class="row">
+
+                <div class="6u 12u$(narrower)">
+                  <header class="major">
+                    <h2>樓層平面圖<br /></h2>
+                  </header>
+                    <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </div>
+
+                <div class="6u$ 12u$(narrower)">
+                  <span class="image fit"><img id="test" src="image/house01.png"  height="300" /></span>
+                </div>
+
+              </div>
+            
+          </section>
+          
+             
+        <!-- Paramona change from house list and VRmode button -->
+        <script type="text/javascript">
+          var button = document.querySelector('#container #FullScreenBtn');
+          button.addEventListener('click', fullscreen);
+          // when you are in fullscreen, ESC and F11 may not be trigger by keydown listener. 
+          // so don't use it to detect exit fullscreen
+          document.addEventListener('keydown', function (e) {
+          console.log('key press' + e.keyCode);
+          });
+          // detect enter or exit fullscreen mode
+          document.addEventListener('webkitfullscreenchange', fullscreenChange);
+          document.addEventListener('mozfullscreenchange', fullscreenChange);
+          document.addEventListener('fullscreenchange', fullscreenChange);
+          document.addEventListener('MSFullscreenChange', fullscreenChange);
+
+          function fullscreen() { 
+          // check if fullscreen mode is available
+          if (document.fullscreenEnabled || 
+            document.webkitFullscreenEnabled || 
+            document.mozFullScreenEnabled ||
+            document.msFullscreenEnabled) {
+            
+            // which element will be fullscreen
+            var iframe = document.querySelector("iframe");
+            // Do fullscreen
+            if (iframe.requestFullscreen) {
+              iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+              iframe.webkitRequestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+              iframe.mozRequestFullScreen();
+            } else if (iframe.msRequestFullscreen) {
+              iframe.msRequestFullscreen();
+            }
+          }
+          else {
+            document.querySelector('.error').innerHTML = 'Your browser is not supported';
+          }
+        }
+
+        function fullscreenChange() {
+          if (document.fullscreenEnabled ||
+               document.webkitIsFullScreen || 
+               document.mozFullScreen ||
+               document.msFullscreenElement) {
+            console.log('enter fullscreen');
+          }
+          else {
+            console.log('exit fullscreen');
+          }
+          // force to reload iframe once to prevent the iframe source didn't care about trying to resize the window
+          // comment this line and you will see
+          var iframe = document.querySelector('iframe');
+          //iframe.src = iframe.src;
+        }
+          function VRmodeBtn(){
+            ifr.window.IntoVRmode();
+          }
+          function houseList(houseId){
+            ifr.window.ReplacePanorama(houseId);
+          }
+
+        </script>
+
+
+          <!-- Three -->
+          <section class="wrapper style3 container special" >
+
+            <header class="major">
+              <h2><strong>房屋清單</strong><br /></h2>
+            </header>
+
+            <div class="row">
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house00' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house00.png" alt="" /></a>
+                  <header>
+                    <h3>臥室</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house01' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house01.png" alt="" /></a>
+                  <header>
+                    <h3>廚房</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+
+            </div>
+
+
+            <div class="row">
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house02' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house02.png" alt="" /></a>
+                  <header>
+                    <h3>客廳</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house03' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house03.png" alt="" /></a>
+                  <header>
+                    <h3>主臥</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+              
+            </div>
+
+            <div class="row">
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house04' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house04.png" alt="" /></a>
+                  <header>
+                    <h3>客廳</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house05' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house05.png" alt="" /></a>
+                  <header>
+                    <h3>主臥</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+              
+            </div>
+
+            <div class="row">
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house06' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house06.png" alt="" /></a>
+                  <header>
+                    <h3>客廳</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house07' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house07.png" alt="" /></a>
+                  <header>
+                    <h3>主臥</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+              
+            </div>
+
+            <div class="row">
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house08' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house08.png" alt="" /></a>
+                  <header>
+                    <h3>客廳</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+
+              <div class="6u 12u(narrower)">
+                <section>
+                  <a id='house09' onclick="houseList(this.id);" href="#" class="image featured"><img src="image/house09.png" alt="" /></a>
+                  <header>
+                    <h3>主臥</h3>
+                  </header>
+                  <p>旁觀者肯定會說出這種風涼話，但簡單地想一下就知道：開發能解決研究問題的系統工具，跟搞懂Linux伺服器，哪一個是優先要處理的事情呢？答案當然是前者，而且我寧願學生把搞懂Linux所花的時間全部投注在主要系統的開發，專心做好能跟研究直接相關的工作。</p>
+                </section>
+              </div>
+              
+            </div>
+          </section>
+          
+        </article>
+      
+
+      <!-- Footer -->
+        <footer id="footer">
+
+          <ul class="icons">
+            <li><a href="#" class="icon circle"><span class="label">Dribbble</span></a></li>
+          </ul>
+
+          <ul class="copyright">
+            <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.dropotron.min.js"></script>
+      <script src="assets/js/jquery.scrolly.min.js"></script>
+      <script src="assets/js/jquery.scrollgress.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="assets/js/main.js"></script>
+
+  </body>
+</html>
